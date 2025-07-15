@@ -8,6 +8,12 @@ public interface MovieService {
 
     public List<Movie> getMovies();
 
+    public List<Movie> findByGenre(String genre);
+
+    public List<Movie> findByDirectorName(String directorName);
+
+    public void save(Movie movie);
+
 
 
 

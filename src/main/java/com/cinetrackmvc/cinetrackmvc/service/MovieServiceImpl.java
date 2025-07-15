@@ -17,9 +17,25 @@ public class MovieServiceImpl implements MovieService{
     {
         this.movieRepository=movieRepository;
     }
-
     @Override
     public List<Movie> getMovies() {
         return movieRepository.getAllMovies();
     }
+
+    @Override
+    public List<Movie> findByGenre(String genre) {
+        return movieRepository.findByGenre(genre);
+    }
+
+    @Override
+    public List<Movie> findByDirectorName(String directorName) {
+        return movieRepository.findByDirectorName(directorName);
+    }
+
+    @Override
+    public void save(Movie movie) {
+        movieRepository.saveMovie(movie);
+    }
+
+
 }
