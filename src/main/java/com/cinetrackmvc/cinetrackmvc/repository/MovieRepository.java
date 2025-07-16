@@ -43,12 +43,10 @@ public class MovieRepository {
     }
 
 
-    public List<Movie> findByGenre(String genre)
-    {
-        return entityManager.createQuery("SELECT m Movie m WHERE m.directorName = :directorName", Movie.class)
-                .setParameter("directorName",genre)
+    public List<Movie> findByGenre(String genre) {
+        return entityManager.createQuery("SELECT m FROM Movie m WHERE m.genre = :genre", Movie.class)
+                .setParameter("genre", genre)
                 .getResultList();
-
     }
 
 }
