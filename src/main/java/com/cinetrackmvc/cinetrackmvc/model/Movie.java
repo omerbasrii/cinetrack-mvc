@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "movies")
 public class Movie {
@@ -23,6 +25,10 @@ public class Movie {
     @NotBlank(message = "Movie banner is required")
     @Pattern(regexp = "^(http|https)://.*", message = "Poster URL must be a valid link")
     private  String movieBanner;
+    private LocalDateTime createdAt = LocalDateTime.now();
+    private LocalDateTime updatedAt;
+
+
 
 
     public Movie(){}
@@ -33,6 +39,7 @@ public class Movie {
         this.genre = genre;
         this.imdbScore = imdbScore;
         this.movieBanner = movieBanner;
+        this.createdAt = LocalDateTime.now();
     }
 
 
