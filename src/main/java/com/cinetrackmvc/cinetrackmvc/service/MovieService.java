@@ -14,5 +14,7 @@ public interface MovieService {
 
     public void save(Movie movie);
 
+    public Movie findById(int id);
+
 
 }
