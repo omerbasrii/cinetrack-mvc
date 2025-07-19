@@ -59,7 +59,7 @@ public class MovieController {
         List<MovieResponse> movies = movieMapper.toResponseList(movieService.findByDirectorName(directorName));
         if(movies == null)
         {
-            throw new NoSuchElementException("This director's movies could not be found");
+            throw new NoSuchElementException("This director's movies could not be found!!!!");
         }
         return movies;
     }
