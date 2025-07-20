@@ -13,21 +13,13 @@ public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
-
-    @NotBlank(message = "Movie name is required")
     private String movieName;
-    @NotBlank(message = "Director name is required")
     private String directorName;
-    @NotBlank(message = "Genre is required")
     private String genre;
-    @NotBlank(message = "IMDB score is required")
     private double imdbScore;
-    @NotBlank(message = "Movie banner is required")
-    @Pattern(regexp = "^(http|https)://.*", message = "Poster URL must be a valid link")
     private  String movieBanner;
     private LocalDateTime createdAt = LocalDateTime.now();
     private LocalDateTime updatedAt;
-
 
 
 
