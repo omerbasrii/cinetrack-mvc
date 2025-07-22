@@ -38,4 +38,15 @@ public class GlobalExceptionHandler {
 
     }
 
+    @ExceptionHandler(NoSuchMethodException.class) //I will change
+    public ResponseEntity<Map<String,String>> handeleerror(NoSuchElementException ex){
+
+        Map<String,String> errors = new HashMap<>();
+
+        errors.put("error",ex.getMessage());
+
+        return ResponseEntity.status((HttpStatus.NOT_FOUND)).body(errors);
+
+    }
+
 }
