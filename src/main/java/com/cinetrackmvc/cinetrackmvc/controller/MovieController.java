@@ -5,6 +5,7 @@ import com.cinetrackmvc.cinetrackmvc.dto.MovieResponse;
 import com.cinetrackmvc.cinetrackmvc.mapper.MovieMapper;
 import com.cinetrackmvc.cinetrackmvc.model.Movie;
 import com.cinetrackmvc.cinetrackmvc.service.MovieService;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -72,6 +73,8 @@ public class MovieController {
         return movies;
     }
 
+
+    @Operation(summary = "New Movie added")
     @PostMapping("movies/")
     public ResponseEntity<String> addMovie(@RequestBody @Valid MovieRequest movieRequest) {
         Movie movie = movieMapper.toMovieEntity(movieRequest);
