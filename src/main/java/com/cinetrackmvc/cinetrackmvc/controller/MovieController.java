@@ -74,7 +74,7 @@ public class MovieController {
     }
 
 
-
+    @Operation(summary = "New Movie added")
     @PostMapping("movies/")
     public ResponseEntity<String> addMovie(@RequestBody @Valid MovieRequest movieRequest) {
         Movie movie = movieMapper.toMovieEntity(movieRequest);
