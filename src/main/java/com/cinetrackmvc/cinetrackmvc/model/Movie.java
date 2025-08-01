@@ -18,7 +18,9 @@ public class Movie {
     private String genre;
     private double imdbScore;
     private  String movieBanner;
+    @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
+    @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
 
@@ -78,5 +80,11 @@ public class Movie {
     public void setMovieBanner(String movieBanner) {
         this.movieBanner = movieBanner;
     }
+
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+
+    public LocalDateTime getUpdatedAt() { return updatedAt; }
+    public void setUpdatedAt(LocalDateTime updatedAt) { this.updatedAt = updatedAt; }
 
 }
