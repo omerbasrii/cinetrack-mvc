@@ -1,9 +1,6 @@
 package com.cinetrackmvc.cinetrackmvc.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
-
 import java.time.LocalDateTime;
 
 @Entity
@@ -12,18 +9,21 @@ public class Movie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int Id;
+    private int id;
+    @Column(name = "movie_name", nullable = false, length = 255)
     private String movieName;
+    @Column(name = "director_name", length = 255)
     private String directorName;
+    @Column(name = "genre", length = 100)
     private String genre;
+    @Column(name = "imdb_score")
     private double imdbScore;
+    @Column(name = "movie_banner")
     private  String movieBanner;
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
-
-
 
     public Movie(){}
 
@@ -38,7 +38,7 @@ public class Movie {
 
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public String getMovieName() {
