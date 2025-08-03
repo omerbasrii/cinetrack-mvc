@@ -6,6 +6,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import java.lang.reflect.Type;
@@ -23,6 +24,7 @@ public class MovieRepository {
         return entityManager.createQuery("SELECT m from Movie m",Movie.class).getResultList();
     }
 
+    @Transactional
     public void saveMovie(Movie movie)
     {
         entityManager.persist(movie);
