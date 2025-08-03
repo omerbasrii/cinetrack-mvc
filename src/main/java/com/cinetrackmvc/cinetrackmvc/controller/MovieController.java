@@ -10,6 +10,8 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -28,8 +30,14 @@ public class MovieController {
     }
 
     @GetMapping("/movies")
-    public List<Movie> getMovies() {
-        return movieService.getMovies();
+    public List<MovieResponse> getMovies() {
+        List<Movie> movies = movieService.getMovies();
+        List<MovieResponse> moviesRes = new ArrayList<>();
+        for (Movie m : movies) {
+            MovieResponse movieRes = movieMapper.toResponse(m);
+            moviesRes.add(movieRes);
+        }
+        return moviesRes;
     }
 
     @GetMapping("/movies/{id}")
@@ -45,8 +53,7 @@ public class MovieController {
     @GetMapping("/movies/{movieName}")
     public MovieResponse getMovieByName(@PathVariable String movieName)
     {
-        MovieResponse movie = movieMapper.toResponse(movieService.findByMovieName(movieName));
-        return movie;
+        return movieMapper.toResponse(movieService.findByMovieName(movieName));
     }
 
 
